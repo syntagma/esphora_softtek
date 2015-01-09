@@ -1,0 +1,102 @@
+.div_error_req {
+	display:none;
+	color:red;
+	font-size:8pt;
+}
+
+.div_error_num {
+	display:none;
+	color:red;
+	font-size:8pt;
+}
+
+.div_error_fecha {
+	display:none;
+	color:red;
+	font-size:8pt;
+}
+
+.div_error_email {
+	display:none;
+	color:red;
+	font-size:8pt;
+}
+
+table {font-size:10pt;}
+
+	table.table_login           
+	{
+		width:340px;
+		margin:0px;
+		border-style:solid;
+		border-color:#345b80;
+		border-width:1px 1px 1px 1px;
+		font-size:10pt;
+	}
+    
+	table.image_login     
+	{
+		width:340px;
+		height:90px;
+		margin:0px;
+		padding:0px;
+		border-style:solid;
+		background:top no-repeat url("http://www.softtek.com/sp/images/softtek_logo.gif");
+		border-color:#7f9db9;
+		border-width:0;
+		margin-bottom:5px;
+	}
+	
+    td.head_login         {
+		background:#345b80;
+		color:#fff;
+		text-align:center;
+		padding:8px 5px 8px 5px;
+	}
+    
+	td.text_login         {
+		width:50%;
+		background:#eee;
+		text-align:left;
+		padding:5px;
+	}
+    
+	td.data_login         {
+		background:#eee;
+		text-align:center;
+		padding:5px;
+	}
+	
+    td.send_login         {
+		background:#345b80;
+		text-align:center;
+		padding:6px 5px 6px;
+	}
+
+button          {
+	width:100px;
+}
+
+input           {
+	height:19px;
+	width:200px;
+	padding-left:2px;
+	border-style:solid;
+	border-color:#7f9db9;
+	border-width:1px;
+}
+
+select {
+	width:200px;
+}
+
+.lista_flotante {
+	display:none;
+	position:absolute;
+	//position:relative;
+	float:left;
+	font-size:10pt;
+	background-color: white;
+	border:2px solid black;
+	padding:20px;
+

@@ -1,0 +1,98 @@
+/* Data Table */
+.tabla-abm {
+ border-left: 1px solid;
+}
+
+.tabla-abm  td {
+  padding-left:3px;
+  border:1px solid;
+  border-top:none;
+  border-left:none;
+}
+
+.tabla-abm  th {
+  color: #FFF;
+  font-size: 12px;
+  font-weight:bold;
+}
+
+
+.tabla-abm , .tabla-abm  td, .tabla-abm  th {
+  border-color:#CCC;
+}
+
+/* Table headings */
+.tabla-abm  th {
+  text-align:left;
+  background:#ADADAD;
+  color:#FFF;
+}
+
+.tabla-abm  th a, .tabla-abm  th a:hover {
+  color:#FFF;
+  text-decoration:underline;
+}
+
+/* row highlighting on hover + select */
+.tabla-abm  tr:hover td, .highlight td {  background-color: #FFFFDD; }
+/* disabled highlighting on nohover */
+.tabla-abm  tr:hover td.nohover, .highlight td.nohover {}
+
+
+.tabla-abm-fila-par {
+	background-color: #F4FAFF;
+}
+
+.tabla-abm-fila-impar {
+	background-color: #FFFFFF; 
+}
+
+
+.tabla-abm-fila-inactiva {
+	color: red;
+}
+
+.mensaje_excepcion {
+	    border-color: #903;
+    background-color: #fcc;
+    color: #903;
+    text-align: left;
+    padding:10px;
+}
+
+.tabla-rechazos {
+	background-color: #aaaaff;
+}
+
+.tabla-rechazos td {
+	background-color: #ccccff;
+	color: #aa3333;
+	white-space: normal;
+}
+
+.wait-pantalla-completa {
+	width:100%;
+	height:100%;
+	position:absolute;
+	float:left;
+	left:0;
+	top:0;
+	vertical-align: middle;
+	text-align: center;
+	display:none;
+}
+
+.cuadro-wait-pantalla-completa {
+	background-color: white;
+	border-top: 4px solid silver;
+	border-left: 4px solid silver;
+	border-bottom: 4px solid gray;
+	border-right: 4px solid gray;
+	padding:50px;
+	width:300px;
+}
+
+.cuenta-navigator {
+	text-align:right;
+	font-weight: bold;
+}

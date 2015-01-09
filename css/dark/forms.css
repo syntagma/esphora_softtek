@@ -1,0 +1,80 @@
+.div_error_req {
+	display:none;
+	color:7CBF0F;
+	font-size:8pt;
+}
+
+.div_error_num {
+	display:none;
+	color:7CBF0F;
+	font-size:8pt;
+}
+
+
+	table.table_login           
+	{
+		width:340px;
+		margin:0px;
+		border-style:solid;
+		border-color:#5D5F53;
+		border-width:1px 1px 1px 1px;
+		font-size:10pt;
+	}
+    
+	table.image_login     
+	{
+		width:340px;
+		height:60px;
+		margin:0px;
+		padding:0px;
+		border-style:solid;
+		background: #2a3742 top no-repeat url("http://www.syntagma.com.ar/images/c_name.gif");
+		border-color:#7f9db9;
+		border-width:0;
+		margin-bottom:20px;
+	}
+	
+    td.head_login         {
+		background:#5D5F53;
+		color:#7CBF0F;
+		text-align:center;
+		padding:8px 5px 8px 5px;
+	}
+    
+	td.text_login         {
+		width:50%;
+		background:#2a3742;
+		text-align:left;
+		padding:5px;
+	}
+    
+	td.data_login         {
+		background:#2a3742;
+		text-align:center;
+		padding:5px;
+	}
+	
+	td.option_login         {
+		background:#2a3742;
+		text-align:center;
+		padding:5px;
+		width:200px;
+	}
+	
+    td.send_login         {
+		background:#2a3742;
+		text-align:center;
+		padding:6px 5px 6px;
+		width:100px;
+	}
+
+
+input           {
+	height:19px;
+	width:200px;
+	padding-left:2px;
+	border-style:solid;
+	border-color:#5D5F53;
+	border-width:1px;
+}
+

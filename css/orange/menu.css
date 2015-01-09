@@ -1,0 +1,59 @@
+#div_menu {
+	width:100%;
+	height:20px;
+	background-color: #FFF;
+	border-top: 1px solid #ADADAD;
+	border-bottom: 1px solid #ADADAD;
+}
+
+.menuitem {
+	width: 130px;
+	height: 100%;
+	text-align: center;
+	border-right: 1px solid #ADADAD;
+	color:#FFF;
+	float: left;
+	cursor:pointer;
+	font: 12px Verdana, sans-serif;
+}
+.menuitem a:visited {
+	color: #006699;
+}
+
+.menuitem : hover {
+	color: #006699;
+ background: white;
+ border-bottom: 1px solid white;
+}
+
+
+.submenuitem {
+	width: 230px;
+	height: 100%;
+	text-align: left;
+	color:#000;
+	background-color:#FFFFDD;
+	float: left;
+	font: 10px Verdana, sans-serif;;
+	cursor:pointer;
+	border: 1px solid #ADADAD;
+	border-top-width:0;
+	border-left-width:2px;
+	padding:2px;
+}
+
+.seleccionado {
+	cursor: default;
+	font-weight: bold;
+	font-style: italic;
+}
+
+.submenucontainer {
+	width=230px;
+	position:relative;
+	color:#5555ff;
+	float: left;
+	font-size:10pt;
+	cursor:pointer;
+	margin-top:4px;
+}

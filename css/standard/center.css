@@ -1,0 +1,50 @@
+.tabla-abm {
+	font-size:10pt;
+	text-align: left;
+	vertical-align: top;
+	border:1px solid #555555;
+}
+
+.tabla-abm td {
+	white-space: nowrap;
+}
+
+.tabla-abm th {
+	background-color: #8888ff;
+	color:white;
+	white-space: nowrap;
+}
+
+.tabla-abm th a{
+	color:white;
+}
+
+.tabla-abm-fila-par {
+	background-color: silver;
+}
+
+.tabla-abm-fila-impar {
+	background-color: white;
+}
+
+
+.tabla-abm-fila-inactiva {
+	color: red;
+}
+
+.mensaje_excepcion {
+	background-color: white;
+	border: 1px solid black;
+	color:red;
+	padding:10px;	
+}
+
+.tabla-rechazos {
+	background-color: #aaaaff;
+}
+
+.tabla-rechazos td {
+	background-color: #ccccff;
+	color: #aa3333;
+	white-space: normal;
+}

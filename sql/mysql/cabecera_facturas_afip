@@ -1,0 +1,29 @@
+select 
+1 "Tipo_Registro",
+FACTURA.fec_cbte,
+TIPO_COMPROBANTE.cod_comprobante,
+" " controlador_fiscal,
+PUNTO_VENTA.numero "punto_venta",
+FACTURA.nro_factura,
+FACTURA.nro_factura "nro_factura_registrada",
+'001' cantidad_hojas,
+TIPO_DOCUMENTO.cod_doc_afip "tipo_documento",
+CLIENTE.razon_social,
+FACTURA.total,
+FACTURA.total - FACTURA.importe_neto_gravado total_conc_no_gravados,
+FACTURA.importe_neto_gravado,
+FACTURA.impuesto_liquidado,
+FACTURA.impuesto_liquidado_rni,
+FACTURA.importe_ope_exentas,
+0 transporte,
+CONDICION_IVA.codigo_afip,
+MONEDA.codigo_moneda_afip,
+"FACTURA.tipo_cambio",
+FACTURA.cae
+from FACTURA, TIPO_COMPROBANTE, PUNTO_VENTA, TIPO_DOCUMENTO, CLIENTE, CONDICION_IVA, MONEDA
+where FACTURA.id_tipo_comprobante = TIPO_COMPROBANTE.id_tipo_Comprobante
+and FACTURA.id_punto_venta = PUNTO_VENTA.id_punto_venta
+and FACTURA.id_cliente = CLIENTE.id_cliente
+and CLIENTE.id_tipo_documento = TIPO_DOCUMENTO.id_tipo_documento
+and CLIENTE.id_condicion_iva = CONDICION_IVA.id_condicion_iva
+and MONEDA.id_moneda = FACTURA.id_moneda

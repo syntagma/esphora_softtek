@@ -1,0 +1,30 @@
+.tabla-abm {
+	font-size:10pt;
+	text-align: left;
+	vertical-align: top;
+	border:1px solid #555555;
+}
+.tabla-abm th {
+	background-color: #5D5F53;
+	color:white;
+}
+
+.tabla-abm-fila-par {
+	background-color: silver;
+}
+
+.tabla-abm-fila-impar {
+	background-color: white;
+}
+
+
+.tabla-abm-fila-inactiva {
+	color: red;
+}
+
+.mensaje_excepcion {
+	background-color: white;
+	border: 1px solid black;
+	color:red;
+	padding:10px;	
+}

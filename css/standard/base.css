@@ -1,0 +1,75 @@
+body {
+	margin:0 0 0 0;
+	font-family:Verdana , Arial, Helvetica, sans-serif;
+}
+
+td {
+	vertical-align:top;
+}
+
+a {
+	text-decoration:none;
+	color:#5555ff;
+}
+
+a:hover {
+	text-decoration:underline;
+}
+
+a:VISITED {
+	color: #5555ff;
+}
+
+#logoutpanel {
+	font-size:10pt;
+	color:black;
+	font-weight: normal;
+}
+
+#div_header{
+	width:100%;
+	height:100px;
+	padding-top:20px;
+	vertical-align: middle;
+	font-weight: bold;
+	font-size: 16pt;
+	color: #aaaaaa;
+	background-color:#abcdef;	
+	background-repeat:repeat-x;
+	background-image: url('images/gradientesV.png');
+}
+
+#div_footer {
+	width: 100%;
+	height: 50px;
+	padding-top:5px;
+	left: 0;
+	vertical-align: middle;
+	text-align:center;
+	background-color: #aaaaaa;
+}
+
+#div_center {
+	padding:20px;
+	height:400px; 
+	background:white url(images/gradientesV-center.png) repeat-x;
+}
+
+.titulo1 {
+	font-size: 14pt;
+	color: #555555;
+	margin-bottom:10px;
+}
+
+.lista-funciones {
+	font-size:10pt;
+	color: #555555;
+}
+
+.lista-funciones a {
+	color: #5555ff;
+}
+
+.lista-funciones a:visited {
+	color: #5555ff;
+}

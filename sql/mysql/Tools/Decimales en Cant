@@ -1,0 +1,6 @@
+select FACTURA.nro_factura, FACTURA.importe_neto_gravado,FACTURA.id_empresa, SUM(DETALLE_FACTURA.cantidad * DETALLE_FACTURA.precio_unitario)
+FROM FACTURA, DETALLE_FACTURA
+WHERE FACTURA.id_factura = DETALLE_FACTURA.id_factura
+GROUP BY FACTURA.nro_factura, FACTURA.total , FACTURA.id_empresa
+HAVING SUM(DETALLE_FACTURA.cantidad*DETALLE_FACTURA.precio_unitario) <> FACTURA.importe_neto_gravado
+ORDER BY FACTURA.id_empresa, FACTURA.nro_factura;

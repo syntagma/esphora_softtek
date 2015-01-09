@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.0//EN" "http://www.w3.org/TR/xhtml-basic/xhtml-basic10.dtd">
+
+<conf>
+	<desarrollo>
+		<bd>mysql</bd>
+		<user>root</user>
+		<password></password>
+		<host>localhost</host>
+		<port>3306</port>
+		<dbname>esforadesa</dbname>
+		<users_table>USUARIO</users_table>
+		<login_field>login</login_field>
+		<password_field>password</password_field>
+	</desarrollo>
+	<test>
+		<bd>mysql</bd>
+		<user>syntagma</user>
+		<password>syntagmasa</password>
+		<host>190.228.29.67</host>
+		<port>3306</port>
+		<dbname>esforadesa</dbname>
+		<users_table>USUARIO</users_table>
+		<login_field>login</login_field>
+		<password_field>password</password_field>
+	</test>
+	<produccion>
+		<bd>mysql</bd>
+		<user>syntagma</user>
+		<password>syntagmasa</password>
+		<host>190.228.29.67</host>
+		<port>3306</port>
+		<dbname>esforadesa</dbname>
+		<users_table>USUARIO</users_table>
+		<login_field>login</login_field>
+		<password_field>password</password_field>
+	</produccion>
+	<oracle>
+		<bd>oci8</bd>
+		<user>esphoradesa</user>
+		<password>syntagmasa</password>
+		<host>syntagma.dyndns.org</host>
+		<port>1521</port>
+		<dbname>XE</dbname>
+		<users_table>USUARIO</users_table>
+		<login_field>login</login_field>
+		<password_field>password</password_field>
+	</oracle>
+	<licencias>
+		<bd>mysql</bd>
+		<user>syntagma</user>
+		<password>syntagmasa</password>
+		<host>190.228.29.67</host>
+		<port>3306</port>
+		<dbname>syntagmalicencia</dbname>
+	</licencias>
+		
+</conf>
