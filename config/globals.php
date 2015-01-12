@@ -43,9 +43,8 @@ define("GLOBAL_EMPRESA", esphora_setcookie('empresa', 1));
 
 define("CONFIG_DIR", "config/");
 
-//define("AMBIENTE", "test");
+define("AMBIENTE", "test");
 //define("AMBIENTE", "produccion");
-define("AMBIENTE", "produccion");
 
 define("URL_LISTA_FACTURAS", "index.php?modulo=FACT&funcion=CONSULTAFACTURA");
 define("URL_ALTA_FACTURAS", "index.php?modulo=FACT&funcion=ALTAFACTURA");

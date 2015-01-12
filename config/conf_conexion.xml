@@ -5,9 +5,9 @@
 		<bd>mysql</bd>
 		<user>esphora</user>
 		<password>softtek</password>
-		<host>stkbavmfe.softtek.com</host>
+		<host>localhost</host>
 		<port>3306</port>
-		<dbname>esphora_softtek_test</dbname>
+		<dbname>esphora_softtek_prod</dbname>
 		<users_table>USUARIO</users_table>
 		<login_field>login</login_field>
 		<password_field>password</password_field>
