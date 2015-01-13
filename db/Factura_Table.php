@@ -251,6 +251,11 @@ public $fetchmode = MDB2_FETCHMODE_ASSOC;
             'require' => true,
             'default' => ''
         ),
+        'tipoFactProdServ'             => array(
+            'type'    => 'varchar',
+            'size' => 10,
+            'default' => null
+        ),
 
         'id_cliente'             => array(
             'type' => 'bigint'

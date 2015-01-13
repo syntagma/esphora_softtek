@@ -3,6 +3,10 @@
 	$tipos_comprobante = $_SESSION['tipos_comprobante'];
 	$clientes = $_SESSION['clientes'];
 	
+  // echo "<pre>";
+  // print_r($edicion);
+  // echo "</pre>";
+  // exit;
 	
 	$condicion_venta = $_SESSION['condicion_venta'];
 	$punto_venta = $_SESSION['punto_venta'];
@@ -135,8 +139,22 @@ EOF;
     		<td nowrap align="right">Tipo de Factura</td>
     
     		<td nowrap align="left">
-				<input type="radio" name="tipoFactProdServ" value="SERVICIO" checked>Servicio</input>
-				<input type="radio" name="tipoFactProdServ" value="PRODUCTO">Producto</input>
+        
+        <?php
+          $valoresPS = array('SERVICIO' => true, 'PRODUCTO' => false);
+
+          $chequeadoPS = array();
+          foreach ($valoresPS as $clavePS => $valorPS) {
+        ?>
+            <input 
+              type="radio" 
+              name="tipoFactProdServ" 
+              value="<?php echo $clavePS; ?>" 
+              <?php echo (($edicion == array() && $valorPS) || $edicion['tipofactprodserv'] == $clavePS) ? "checked" : ""; ?>
+            ><?php echo ucfirst(strtolower($clavePS)); ?></input>
+        <?php
+          }
+        ?>
 			</td>
     		
     		<td nowrap>&nbsp;</td>
