@@ -132,9 +132,12 @@ EOF;
     
     		<td nowrap>&nbsp;</td>
     
-    		<td nowrap align="right">&nbsp;</td>
+    		<td nowrap align="right">Tipo de Factura</td>
     
-    		<td nowrap>&nbsp;</td>
+    		<td nowrap align="left">
+				<input type="radio" name="tipoFactProdServ" value="SERVICIO" checked>Servicio</input>
+				<input type="radio" name="tipoFactProdServ" value="PRODUCTO">Producto</input>
+			</td>
     		
     		<td nowrap>&nbsp;</td>
   		</tr>

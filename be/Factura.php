@@ -39,6 +39,7 @@ class Factura extends Auditoria {
 			$this->assign($this->_fechaVencPago,$fields['fecha_venc_pago']);
 			$this->assign($this->_fecCbte,$fields['fec_cbte']);
 			$this->assign($this->_prestaServ,$fields['presta_serv']);
+			$this->assign($this->_tipoFactProdServ,$fields['tipoFactProdServ']);
 			
 			if(isset($fields['id_tipo_comprobante'])) {
 				$this->_oTipoComprobante = new TipoComprobante(); 
@@ -72,7 +73,7 @@ class Factura extends Auditoria {
 		$this->assign($row['fecha_venc_pago'], $this->_fechaVencPago);
 		$this->assign($row['fec_cbte'], $this->_fecCbte);
 		$this->assign($row['presta_serv'], $this->_prestaServ);
-		
+		$this->assign($row['tipoFactProdServ'], $this->_tipoFactProdServ);
 		if (isset($this->_oTipoComprobante))
 			$this->assign($row['id_tipo_comprobante'], $this->_oTipoComprobante->getID());
 			
@@ -98,7 +99,7 @@ class Factura extends Auditoria {
 	private $_fechaVencPago;
 	private $_fecCbte;
 	private $_prestaServ;
-	
+	private $_tipoFactProdServ;
 	private $_oTipoComprobante;
 	private $_oCliente;
 	private $_oEmpresa;
@@ -110,6 +111,10 @@ class Factura extends Auditoria {
 	public function setTipoComprobante(TipoComprobante $oTipoComprobante) { $this->_oTipoComprobante = $oTipoComprobante; }
 	public function setCliente(Cliente $oCliente) { $this->_oCliente = $oCliente; }
 	public function setEmpresa(Empresa $oEmpresa) { $this->_oEmpresa = $oEmpresa; }
+	
+	public function get_tipoFactProdServ() {
+		return $this->_tipoFactProdServ;
+	}
 	
 	public function get_fecCbte() {
 		return $this->_fecCbte;
@@ -153,6 +158,10 @@ class Factura extends Auditoria {
 	
 	public function get_idPuntoVenta() {
 		return $this->_idPuntoVenta;
+	}
+	
+	public function set_tipoFactProdServ($_tipoFactProdServ) {
+		$this->_tipoFactProdServ = $_tipoFactProdServ;
 	}
 	
 	public function get_total() {

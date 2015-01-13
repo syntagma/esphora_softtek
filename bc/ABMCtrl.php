@@ -194,7 +194,7 @@ EOF;
 			
 			$ret.="<td $estilo>$ahref|&lt;$cierraA</td><td $estilo>$ahrefPrev&lt;&lt;$cierraA</td>";
 			
-			for ($i = 0; $i <= $paginas; $i++) {
+			/*for ($i = 0; $i <= $paginas; $i++) {
 				
 				$j=$i+1;
 				
@@ -207,7 +207,7 @@ EOF;
 					$ret.="<td $estilo><a href='$href'>$j</a></td>";
 				}
 			}
-			
+			*/
 			if ($pag == $j) {
 				$ahref = "";
 				$ahrefPrev = "";
