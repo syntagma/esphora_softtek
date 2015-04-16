@@ -51,7 +51,7 @@ switch ($action) {
 			echo obtieneSiguienteCbte((float)$cuit, $tipocbte, $ptovta);
 		}
 		catch (Exception $e) {
-			echo "Error al obtener el numero de comprobante<br>".$e->getMessage();
+			echo "Error al obtener el numero de comprobante AFIP<br>".$e->getMessage();
 		}
 		break;
 	
@@ -62,7 +62,7 @@ switch ($action) {
 			echo obtieneSiguienteCbteBD($_GET['tipoComprobante'], $ptovta);
 		}
 		catch (Exception $e) {
-			echo "Error al obtener el numero de comprobante<br>".$e->getMessage();
+			echo "Error al obtener el numero de comprobante BD<br>".$e->getMessage();
 		}
 		break;
 		

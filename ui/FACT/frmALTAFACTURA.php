@@ -3,10 +3,6 @@
 	$tipos_comprobante = $_SESSION['tipos_comprobante'];
 	$clientes = $_SESSION['clientes'];
 	
-  // echo "<pre>";
-  // print_r($edicion);
-  // echo "</pre>";
-  // exit;
 	
 	$condicion_venta = $_SESSION['condicion_venta'];
 	$punto_venta = $_SESSION['punto_venta'];

@@ -88,6 +88,7 @@ class AfipFacade  {
 	  $oTicketRequest->header->addChild('expirationTime',date('c',date('U')+3600));
 	  $oTicketRequest->addChild('service',$this->_service);
 //	  $TRA->asXML('TRA.xml');
+
 	  return $oTicketRequest;
 	}
 	
@@ -245,7 +246,7 @@ class AfipFacade  {
 		$filename = $this->getTicketFilename($cuit);
 		if(file_exists($filename)) {
 			$oTicketRequest = simplexml_load_file($filename);
-		}
+		}	
 		return $oTicketRequest;
 	}
 	
@@ -286,8 +287,10 @@ class AfipFacade  {
 		if ($cuit == null) {
 			$cuit = $this->getCuitEmpresaFromGlobal();
 		}
+		
 		$oTicketRequest = $this->readTicket($cuit);
-		if (!$this->isValid($oTicketRequest)) {
+		
+		if (!$this->isValid($oTicketRequest)) {			
 			$oTicketRequest = $this->createTicketRequest();
 			$CMS = $this->signTRA($oTicketRequest, $cuit);
 			$credentials=$this->callWSAA($CMS);
@@ -309,17 +312,57 @@ class AfipFacade  {
 	
 	public function callWSAA($CMS)
 	{
-	  $client=new SoapClient(CONFIG_DIR."/afip/".$this->_wsaa_wsdl, 
+		/*
+		$opts = array(
+          'http'=>array(
+            'user_agent' => 'PHPSoapClient'
+            ),
+		  'ssl' => array('ciphers'=>'RC4-SHA')
+        );
+		$context = stream_context_create($opts);
+		
+	ini_set("soap.wsdl_cache_enabled", "0");
+		
+		//throw new Exception (CONFIG_DIR."afip/".$this->_wsaa_wsdl);
+	  $client=new SoapClient(c, 
 							  array(
 									  'soap_version'   => SOAP_1_2,
-									  'location'       => $this->_wsaa_url,
+									  //'location'       => $this->_wsaa_url,
 							#          'proxy_host'     => this->_proxy_host,
 							#          'proxy_port'     => this->_proxy_port,
-									  'exceptions'     => 0
-									  )); 
-	  $results=$client->loginCms(array('in0'=>$CMS));
+									   'exceptions'     => 1,
+									   //'stream_context' => $context,
+									   //'encoding'     => 'ISO-8859-1',
+									   //'features'     => SOAP_USE_XSI_ARRAY_TYPE + SOAP_SINGLE_ELEMENT_ARRAYS,
+									   'local_cert'	=> "C:\wamp\www\esphora\config\wsaa.pem", //CONFIG_DIR.'wsaa.pem',
+									   'trace'        => 1));
+								
+
+	  //throw new Exception("<pre>".print_r($client->__getFunctions(), true)."</pre>");
+		//$client->__setLocation("https://wsaa.afip.gov.ar/ws/services/LoginCms");
+	  $results=$client->loginCms(array('in0'=>$CMS;
+	  */
+	  
+	    $client=new SoapClient(CONFIG_DIR."afip/".$this->_wsaa_wsdl, array(
+          'proxy_host'     => "192.168.0.17",
+          'proxy_port'     => 8080,
+          'soap_version'   => SOAP_1_2,
+          'location'       => $this->_wsaa_url,
+          'trace'          => 1,
+          'exceptions'     => 0
+          )); 
+	$results=$client->loginCms(array('in0'=>$CMS));
+	//file_put_contents("request-loginCms.xml",$client->__getLastRequest());
+	//file_put_contents("response-loginCms.xml",$client->__getLastResponse());
+
+	  
 	  if (is_soap_fault($results)) 
-		{throw  new Exception("SOAP Fault: ".$results->faultcode."<br>".$results->faultstring."\n");}
+		{
+			//throw  new Exception ("<pre>".print_r($results, true)."</pre>");
+			throw  new Exception("SOAP Fault: ".$results->faultcode."<br>".$results->faultstring."\n");
+		}
+		
+		//throw new Exception("yes");
 		
 		$oTicketAcceso = simplexml_load_string($results->loginCmsReturn);
 	    //echo ('Token: ' . $oTicketAcceso->credentials[0]->token[0]);
@@ -349,10 +392,11 @@ class AfipFacade  {
 	
 	public function getLastInvoiceNumber ($client, $token, $sign, $cuit)
 	{
-	  $results=$client->FEUltNroRequest(
-		array('argAuth'=>array('Token' => $token,
+	  $request = array('argAuth'=>array('Token' => $token,
 								'Sign' => $sign,
-								'cuit' => $cuit)));
+								'cuit' => $cuit));
+	  
+	  $results=$client->FEUltNroRequest($request);
 	  if ( $results->FEUltNroRequestResult->RError->percode != 0 )
 		{
 		  throw new Exception ("Error devuelto de AFIP: ".$results->FEUltNroRequestResult->RError->percode."<BR>Descripcion: ".$results->FEUltNroRequestResult->RError->perrmsg);
@@ -364,8 +408,8 @@ class AfipFacade  {
 		$client=new SoapClient(CONFIG_DIR."afip/".$this->_wsfe_wsdl,
 		  array('soap_version' => SOAP_1_2,
 			'location'     =>  $this->_wsfe_url,
-	#       'proxy_host'   => "proxy",
-	#       'proxy_port'   => 80,
+	       'proxy_host'   => "192.168.0.17",
+	       'proxy_port'   => 8080,
 			'exceptions'   => 0,
 			'trace'        => 1)); # needed by getLastRequestHeaders and others	
 			
@@ -386,22 +430,28 @@ class AfipFacade  {
 	
 	public function RecuperaLastCMP ($client, $token, $sign, $cuit, $ptovta, $tipocbte)
 	{
-	  $results=$client->FERecuperaLastCMPRequest(
-		array('argAuth' =>  array('Token'    => $token,
+		$request = array('argAuth' =>  array('Token'    => $token,
 								  'Sign'     => $sign,
 								  'cuit'     => $cuit),
 			   'argTCMP' => array('PtoVta'   => $ptovta,
-								  'TipoCbte' => $tipocbte)));
-		if ( $results->FERecuperaLastCMPRequestResult->RError->percode != 0 )
-		{
-		  throw new Exception ("Percode: ".$results->FERecuperaLastCMPRequestResult->RError->percode."<BR>Descripcion: ".$results->FERecuperaLastCMPRequestResult->RError->perrmsg);
-		}
+								  'TipoCbte' => $tipocbte));
+	
+		//throw new Exception(print_r($request, true));
+	
+	  $results=$client->FERecuperaLastCMPRequest($request);
 		
 		/*
 		echo "<pre>";
 		print_r($result);
 		echo "</pre>";
 		*/
+		
+		if ( $results->FERecuperaLastCMPRequestResult->RError->percode != 0 )
+		{
+		  throw new Exception ("Percode: ".$results->FERecuperaLastCMPRequestResult->RError->percode."<BR>Descripcion: ".$results->FERecuperaLastCMPRequestResult->RError->perrmsg);
+		}
+		
+		
 		
 		return $results;
 	}
@@ -418,9 +468,9 @@ class AfipFacade  {
 		$client=new SoapClient(CONFIG_DIR."afip/".$this->_wsfe_wsdl,
 		  array('soap_version' => SOAP_1_2,
 			'location'     =>  $this->_wsfe_url,
-	#       'proxy_host'   => "proxy",
-	#       'proxy_port'   => 80,
-			'exceptions'   => 0,
+		    'proxy_host'   => "192.168.0.17",
+	       'proxy_port'   => 8080,
+		   'exceptions'   => 0,
 			'trace'        => 1)); # needed by getLastRequestHeaders and others	
 			
 		$credentials = $this->getTicketAfip($cuit);
@@ -497,9 +547,9 @@ class AfipFacade  {
 	 // $client=new nusoap_client(CONFIG_DIR."afip/".$this->_wsfe_wsdl,
 	  array('soap_version' => SOAP_1_2,
 			'location'     =>  $this->_wsfe_url,
-	#       'proxy_host'   => "proxy",
-	#       'proxy_port'   => 80,
-			'exceptions'   => 0,
+	       'proxy_host'   => "192.168.0.17",
+	       'proxy_port'   => 8080,
+		   'exceptions'   => 0,
 			'trace'        => 1)); # needed by getLastRequestHeaders and others
 	  /*$err = $client->getError();
 	  
@@ -564,9 +614,10 @@ class AfipFacade  {
 	  $client=new SoapClient(CONFIG_DIR."/afip/".$this->_wsfe_wsdl,
 	  array('soap_version' => SOAP_1_2,
 			'location'     =>  $this->_wsfe_url,
-	#       'proxy_host'   => "proxy",
-	#       'proxy_port'   => 80,
-			'exceptions'   => 0,
+	       'proxy_host'   => "192.168.0.17",
+	       'proxy_port'   => 8080,
+
+		   'exceptions'   => 0,
 			'trace'        => 1)); # needed by getLastRequestHeaders and others
 	  $results=$client->FEDummy();
 	

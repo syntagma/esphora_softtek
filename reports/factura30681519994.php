@@ -145,11 +145,11 @@
 	//$textoLargo = "En caso de no ser abonada en termino devengara intereses a una tasa equivalente al doble de la tasa del Banco de la Nacion Argentina para descuento de documentos hasta la fecha de su efectivo pago";
 	$textoLargo = "";
 	if ($factura['tipofactprodserv'] == 'SERVICIO') {
-		$textoLargo = "La mora en el pago de la presente factura generará un interés punitorio del 3% mensual en Pesos.";
+		$textoLargo = "La mora en el pago de la presente factura generara un interes punitorio del 3% mensual en Pesos.";
 	}
 	
 	if ($factura['tipofactprodserv'] == 'PRODUCTO') {
-		$textoLargo = "La mora en el pago de la presente factura generará un interés punitorio del 8% anual en Dólares.";
+		$textoLargo = "La mora en el pago de la presente factura generara un interes punitorio del 8% anual en Dolares.";
 	}
 	
 	$pdf->MultiCell(61,4,$textoLargo,0,'L');
